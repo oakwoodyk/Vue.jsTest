@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <ul class="tablists">
+        <li v-on:click="change('a')" v-bind:class="{'active':isActive === 'a'}">タブ１</li>
+        <li v-on:click="change('b')" v-bind:class="{'active':isActive === 'b'}">タブ２</li>
+        <li v-on:click="change('c')" v-bind:class="{'active':isActive === 'c'}">タブ３</li>
+      </ul>
+      <div class="contents">
+        <p v-if="isActive==='a'">コンテンツ１</p>
+        <p v-else-if="isActive==='b'">コンテンツ２</p>
+        <p v-else-if="isActive==='c'">コンテンツ３</p>
+      </div>
+    </div>
+  <script>
+    const vm = new Vue({
+      el:'#app',
+      data:{
+        isActive:'1'
+      },
+      methods:{
+        change:function(num){
+          this.isActive =num
+        }
+      }
+    })
+  </script>
+  <style>
+.tablists{
+  display: flex;
+}
+li{
+  list-style: none;
+  border:1px solid rgb(199, 194, 194);
+  margin: 10px 1px;
+  padding: 0px 30px;
+}
+.tablists li.active{
+  background-color: black;
+  color: white;
+}
+
+  </style>
+</body>
+</html>
